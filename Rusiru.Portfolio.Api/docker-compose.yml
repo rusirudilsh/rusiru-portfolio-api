@@ -1,0 +1,28 @@
+services:
+  portfolio-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rusiru-portfolio-api
+    ports:
+      - "5000:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:8080
+      ConnectionStrings__DefaultConnection: "Server=portfolio-db,1433;Database=RusiruPortfolioDb;User Id=sa;Password=YourStrongPassword123!;TrustServerCertificate=True;Encrypt=False"
+    depends_on:
+      - portfolio-db
+
+  portfolio-db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: rusiru-portfolio-db
+    ports:
+      - "1433:1433"
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "YourStrongPassword123!"
+    volumes:
+      - portfolio_sql_data:/var/opt/mssql
+
+volumes:
+  portfolio_sql_data:
