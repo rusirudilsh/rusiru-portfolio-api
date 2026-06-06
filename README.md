@@ -77,6 +77,7 @@ Responsible for:
 * Swagger/OpenAPI configuration
 * Dependency injection setup
 * HTTP request/response handling
+* Health check endpoint configuration
 
 ---
 
@@ -160,11 +161,87 @@ This starts:
 * ASP.NET Core API container
 * SQL Server container
 
+The API should be available at:
+
+```text
+http://localhost:5000
+```
+
 Swagger should be available at:
 
 ```text
 http://localhost:5000/swagger
 ```
+
+---
+
+## Health Check Endpoint
+
+The API exposes a health check endpoint using the built-in ASP.NET Core health check middleware.
+
+```text
+GET /api/health
+```
+
+When the API is healthy, the endpoint returns:
+
+```text
+Healthy
+```
+
+With HTTP status:
+
+```text
+200 OK
+```
+
+### Health Check Implementation
+
+The endpoint is registered in `Program.cs` using:
+
+```csharp
+builder.Services.AddHealthChecks();
+
+app.MapHealthChecks("/api/health");
+```
+
+Because this endpoint is registered through middleware and not implemented as a controller action, it may not appear in the Swagger/OpenAPI documentation. This is expected.
+
+### Test Health Check Locally
+
+Run the API:
+
+```bash
+dotnet run --project src/Rusiru.Portfolio.Api/Rusiru.Portfolio.Api.csproj
+```
+
+Then test the health endpoint:
+
+```bash
+curl http://localhost:5000/api/health
+```
+
+Or open it in a browser:
+
+```text
+http://localhost:5000/api/health
+```
+
+### Test Health Check with Docker
+
+Start the API and SQL Server using Docker Compose:
+
+```bash
+docker compose up --build
+```
+
+Then test:
+
+```bash
+curl http://localhost:5000/api/health
+```
+
+The health check endpoint can be used by Docker, cloud hosting platforms, load balancers, and monitoring services to confirm that the API is running.
 
 ---
 
@@ -317,6 +394,7 @@ dotnet tool install --global dotnet-ef
 Planned API areas:
 
 ```text
+/api/health
 /api/professional-summary
 /api/projects
 /api/skills
@@ -353,7 +431,8 @@ Admin endpoints will be protected and used to manage portfolio data.
 * Availability: The application should maintain high availability, ensuring API endpoints remain accessible to users with minimal service interruption.
 * Security: API endpoints must be secured, especially admin-only endpoints.
 * Maintainability: The application should follow a clean, modular, and maintainable design.
-* Performance: Performance: API endpoints should return portfolio content quickly and efficiently, with minimal response delay under normal usage.
+* Performance: API endpoints should return portfolio content quickly and efficiently, with minimal response delay under normal usage.
+* Observability: The application should expose a health check endpoint to support monitoring and deployment readiness checks.
 
 ---
 
@@ -402,7 +481,6 @@ docker compose down -v
 ```
 
 ---
-
 
 ## Repository Hygiene
 
