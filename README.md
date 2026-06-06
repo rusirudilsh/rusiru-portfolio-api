@@ -353,11 +353,7 @@ Admin endpoints will be protected and used to manage portfolio data.
 * Availability: The application should maintain high availability, ensuring API endpoints remain accessible to users with minimal service interruption.
 * Security: API endpoints must be secured, especially admin-only endpoints.
 * Maintainability: The application should follow a clean, modular, and maintainable design.
-* Responsiveness: The UI must work well on desktop, tablet, and mobile devices.
-* Performance: Pages should load quickly (low latency) and avoid unnecessary API calls.
-* Usability: The website should be easy to navigate and clearly present portfolio information.
-* Accessibility: The UI should follow basic accessibility practices, such as readable contrast, semantic HTML, and keyboard-friendly navigation.
-
+* Performance: Performance: API endpoints should return portfolio content quickly and efficiently, with minimal response delay under normal usage.
 
 ---
 
