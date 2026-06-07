@@ -2,7 +2,7 @@
 
 ASP.NET Core Web API for managing and serving content for my personal developer portfolio.
 
-This project is built as a professional full-stack backend service using a lightweight Clean Architecture approach. The goal is to showcase backend development, API design, SQL Server integration, Docker-based local development, testing, and maintainable project structure.
+This project is built using a lightweight Clean Architecture approach to demonstrate backend development, API design, SQL Server integration, Docker-based local development, testing, deployment planning, and maintainable project structure.
 
 ---
 
@@ -36,9 +36,7 @@ The API is intended to be consumed by a separate Vue.js frontend application.
 
 ---
 
-## Architecture Overview
-
-This project follows a lightweight Clean Architecture / layered architecture structure.
+## Project Structure
 
 ```text
 Rusiru.Portfolio.Api
@@ -52,6 +50,14 @@ Rusiru.Portfolio.Api
 ├── tests/
 │   └── Rusiru.Portfolio.UnitTests/
 │
+├── docs/
+│   ├── requirements.md
+│   ├── system-design.md
+│   ├── api-design.md
+│   ├── database-design.md
+│   ├── testing-strategy.md
+│   └── deployment.md
+│
 ├── Dockerfile
 ├── docker-compose.yml
 ├── .dockerignore
@@ -62,28 +68,40 @@ Rusiru.Portfolio.Api
 
 ---
 
+## Documentation
+
+Detailed project documentation is available in the `docs/` folder.
+
+| Document                                               | Description                                          |
+| ------------------------------------------------------ | ---------------------------------------------------- |
+| [`docs/requirements.md`](docs/requirements.md)         | Functional and non-functional requirements           |
+| [`docs/system-design.md`](docs/system-design.md)       | High-level system design and architectural decisions |
+| [`docs/api-design.md`](docs/api-design.md)             | Planned API endpoints and API structure              |
+| [`docs/database-design.md`](docs/database-design.md)   | Database design and entity relationships             |
+| [`docs/testing-strategy.md`](docs/testing-strategy.md) | Testing approach for the API                         |
+| [`docs/deployment.md`](docs/deployment.md)             | API deployment approach                              |
+
+---
+
 ## Project Layers
 
 ### `Rusiru.Portfolio.Api`
 
-The API entry point.
+API entry point.
 
 Responsible for:
 
 * Controllers
-* API endpoint definitions
 * Middleware
-* Authentication and authorization setup
 * Swagger/OpenAPI configuration
 * Dependency injection setup
-* HTTP request/response handling
+* Authentication and authorization setup
 * Health check endpoint configuration
-
----
+* HTTP request/response handling
 
 ### `Rusiru.Portfolio.Application`
 
-The application/use-case layer.
+Application/use-case layer.
 
 Responsible for:
 
@@ -94,11 +112,9 @@ Responsible for:
 * Business use cases
 * Request/response models
 
----
-
 ### `Rusiru.Portfolio.Domain`
 
-The core domain layer.
+Core domain layer.
 
 Responsible for:
 
@@ -107,11 +123,9 @@ Responsible for:
 * Domain rules
 * Core business models
 
----
-
 ### `Rusiru.Portfolio.Infrastructure`
 
-The infrastructure layer.
+Infrastructure layer.
 
 Responsible for:
 
@@ -119,14 +133,12 @@ Responsible for:
 * SQL Server database access
 * DbContext
 * Database migrations
-* External services
+* External service implementations
 * Repository implementations, if required
-
----
 
 ### `Rusiru.Portfolio.UnitTests`
 
-The unit test project.
+Unit test project.
 
 Responsible for:
 
@@ -183,19 +195,17 @@ The API exposes a health check endpoint using the built-in ASP.NET Core health c
 GET /api/health
 ```
 
-When the API is healthy, the endpoint returns:
+Expected response:
 
 ```text
 Healthy
 ```
 
-With HTTP status:
+Expected status:
 
 ```text
 200 OK
 ```
-
-### Health Check Implementation
 
 The endpoint is registered in `Program.cs` using:
 
@@ -207,41 +217,11 @@ app.MapHealthChecks("/api/health");
 
 Because this endpoint is registered through middleware and not implemented as a controller action, it may not appear in the Swagger/OpenAPI documentation. This is expected.
 
-### Test Health Check Locally
-
-Run the API:
-
-```bash
-dotnet run --project src/Rusiru.Portfolio.Api/Rusiru.Portfolio.Api.csproj
-```
-
-Then test the health endpoint:
+Test with:
 
 ```bash
 curl http://localhost:5000/api/health
 ```
-
-Or open it in a browser:
-
-```text
-http://localhost:5000/api/health
-```
-
-### Test Health Check with Docker
-
-Start the API and SQL Server using Docker Compose:
-
-```bash
-docker compose up --build
-```
-
-Then test:
-
-```bash
-curl http://localhost:5000/api/health
-```
-
-The health check endpoint can be used by Docker, cloud hosting platforms, load balancers, and monitoring services to confirm that the API is running.
 
 ---
 
@@ -283,7 +263,7 @@ From the repository root:
 dotnet test
 ```
 
-Or run a specific test project:
+Or run the unit test project directly:
 
 ```bash
 dotnet test tests/Rusiru.Portfolio.UnitTests/Rusiru.Portfolio.UnitTests.csproj
@@ -389,53 +369,6 @@ dotnet tool install --global dotnet-ef
 
 ---
 
-## Suggested API Areas
-
-Planned API areas:
-
-```text
-/api/health
-/api/professional-summary
-/api/projects
-/api/skills
-/api/experience
-/api/certifications
-/api/recommendations
-/api/get-in-touch
-/api/admin
-```
-
-Public endpoints will serve portfolio content.
-
-Admin endpoints will be protected and used to manage portfolio data.
-
----
-
-## Functional Requirements
-
-* Users can view the hero section content.
-* Users can view the About Me / Professional Summary section.
-* Users can view the Technical Skills section.
-* Users can view the Experience section.
-* Users can view the Projects section.
-* Users can view mentor or LinkedIn recommendation highlights.
-* Users can view the Certifications section.
-* Users can use the Get in Touch / Contact section.
-* Users can view footer/social information.
-* Admin users can manage portfolio content.
-
----
-
-## Non-Functional Requirements
-
-* Availability: The application should maintain high availability, ensuring API endpoints remain accessible to users with minimal service interruption.
-* Security: API endpoints must be secured, especially admin-only endpoints.
-* Maintainability: The application should follow a clean, modular, and maintainable design.
-* Performance: API endpoints should return portfolio content quickly and efficiently, with minimal response delay under normal usage.
-* Observability: The application should expose a health check endpoint to support monitoring and deployment readiness checks.
-
----
-
 ## Development Commands
 
 Restore packages:
@@ -505,9 +438,8 @@ Both files are required because they solve different problems.
 
 ## Author
 
-Rusiru Dilshan
+Rusiru Dilshan - Software Engineer
 
-Software Engineer
 
 ---
 

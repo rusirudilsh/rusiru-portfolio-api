@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.5.11723.231 stable
+VisualStudioVersion = 18.5.11723.231
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{827E0CD3-B72D-47B6-A68D-7590B98EB39B}"
 EndProject
@@ -25,6 +25,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		docker-compose.yml = docker-compose.yml
 		Dockerfile = Dockerfile
 		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{E3DFD91A-91D7-44F5-866A-A8E1EA4B9CFD}"
+	ProjectSection(SolutionItems) = preProject
+		docs\api-design.md = docs\api-design.md
+		docs\database-design.md = docs\database-design.md
+		docs\deployment.md = docs\deployment.md
+		docs\requirements.md = docs\requirements.md
+		docs\system-design.md = docs\system-design.md
+		docs\testing-strategy.md = docs\testing-strategy.md
 	EndProjectSection
 EndProject
 Global
@@ -107,5 +117,8 @@ Global
 		{45DFD590-D859-4692-99D9-A0014A6CD5FC} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{FF3F225E-D88A-4BBE-ADB5-3946E43AD516} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{15B2DDFF-9A9C-4B5E-8BC4-498AF17759A2} = {0AB3BF05-4346-4AA6-1389-037BE0695223}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B6C181A3-A71D-4134-9F04-87FAABA7A584}
 	EndGlobalSection
 EndGlobal
