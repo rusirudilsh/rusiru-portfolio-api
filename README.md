@@ -51,6 +51,8 @@ Rusiru.Portfolio
 │   └── Rusiru.Portfolio.UnitTests/
 │
 ├── docs/
+│   ├── assets/
+│   │   └── system-design.png
 │   ├── requirements.md
 │   ├── system-design.md
 │   ├── api-design.md
