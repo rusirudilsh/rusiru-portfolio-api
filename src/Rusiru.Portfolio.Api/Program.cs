@@ -1,3 +1,5 @@
+using Rusiru.Portfolio.Api.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,7 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerDocumentation();
+builder.Services.AddCorsPolicy(builder.Configuration);
+builder.Services.AddRateLimiting();
 builder.Services.AddHealthChecks();
 
 var app = builder.Build();
@@ -18,6 +22,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors(ServiceCollectionExtensions.CorsPolicyName);
+
+app.UseRateLimiter();
 
 app.UseAuthorization();
 
