@@ -39,7 +39,7 @@ The API is intended to be consumed by a separate Vue.js frontend application.
 ## Project Structure
 
 ```text
-Rusiru.Portfolio.Api
+Rusiru.Portfolio
 │
 ├── src/
 │   ├── Rusiru.Portfolio.Api/
