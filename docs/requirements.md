@@ -1,23 +1,26 @@
+# Requirements
 
 ## Functional Requirements
 
-* Users can view the hero section content.
-* Users can view the About Me / Professional Summary section.
-* Users can view the Technical Skills section.
-* Users can view the Experience section.
-* Users can view the Projects section.
-* Users can view mentor or LinkedIn recommendation highlights.
-* Users can view the Certifications section.
-* Users can use the Get in Touch / Contact section.
-* Users can view footer/social information.
-* Admin users can manage portfolio content.
+* The API should provide hero section content for the portfolio website.
+* The API should provide About Me / Professional Summary content.
+* The API should provide technical skills grouped by category.
+* The API should provide work experience details.
+* The API should provide project details, including technologies, descriptions, GitHub links, and live demo links where available.
+* The API should provide recommendation highlights.
+* The API should provide certification details.
+* The API should provide contact information or support contact message submission.
+* The API should provide footer/social link information if required by the frontend.
+* The API should expose a health check endpoint to confirm service availability.
+* Admin users should be able to manage portfolio content through protected endpoints.
 
 ---
 
 ## Non-Functional Requirements
 
-* Availability: The application should maintain high availability, ensuring API endpoints remain accessible to users with minimal service interruption.
-* Security: API endpoints must be secured, especially admin-only endpoints.
-* Maintainability: The application should follow a clean, modular, and maintainable design.
-* Performance: API endpoints should return portfolio content quickly and efficiently, with minimal response delay under normal usage.
-* Observability: The application should expose a health check endpoint to support monitoring and deployment readiness checks.
+* Availability: The API should remain accessible with minimal service interruption.
+* Security: Admin-only endpoints must be protected using authentication and authorization.
+* Maintainability: The API should follow a clean, modular, and maintainable structure.
+* Performance: API endpoints should return portfolio content quickly with minimal response delay under normal usage.
+* Observability: The API should expose a health check endpoint to support monitoring and deployment readiness checks.
+* Reliability: The API should handle validation errors and unexpected failures gracefully.

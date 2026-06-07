@@ -1,7 +1,14 @@
+# API Design
+
+## Overview
+
+This document outlines the planned API structure for the Rusiru Portfolio API.
+
+The API will expose public endpoints for reading portfolio content and protected admin endpoints for managing portfolio content.
+
+---
 
 ## Planned API Areas
-
-Planned API areas:
 
 ```text
 /api/health
@@ -11,10 +18,5 @@ Planned API areas:
 /api/experience
 /api/certifications
 /api/recommendations
-/api/contact-info
+/api/contact-messages
 /api/admin
-```
-
-Public endpoints will serve portfolio content.
-
-Admin endpoints will be protected and used to manage portfolio data.
