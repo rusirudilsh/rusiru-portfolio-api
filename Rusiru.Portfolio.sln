@@ -39,6 +39,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{E3DFD91A-9
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{723042E3-B8CD-4420-B5EF-50E0D0BE651B}"
 	ProjectSection(SolutionItems) = preProject
+		docs\assets\database-design.png = docs\assets\database-design.png
 		docs\assets\system-design.png = docs\assets\system-design.png
 	EndProjectSection
 EndProject
